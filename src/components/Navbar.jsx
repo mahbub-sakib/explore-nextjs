@@ -1,7 +1,12 @@
+"use client";
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useRouter } from 'next/router';
 import React from 'react';
 
 const Navbar = () => {
+    const pathName = usePathname();
+    // const router = useRouter();
     const links = [
         {
             title: "About",
@@ -19,7 +24,23 @@ const Navbar = () => {
             title: "Blogs",
             path: "/blogs"
         },
+        {
+            title: "Categories",
+            path: "/categories"
+        },
+        {
+            title: "Dashboard",
+            path: "/dashboard"
+        },
     ]
+    if (pathName.includes('dashboard')) {
+        return (
+            <div className='bg-green-400' >
+                Dashboard layout
+            </div >
+        )
+    }
+
     return (
         <nav className="bg-red-400 px-6 py-4 flex justify-between items-center">
             <h3 className="text-3xl">Logo <span className="text-cyan-300">Next</span> </h3>
